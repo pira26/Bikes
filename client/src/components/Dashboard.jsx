@@ -1,8 +1,11 @@
 import React, { PropTypes } from 'react';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 
+import Header from './Header.jsx';
 
 const Dashboard = ({ secretData }) => (
+	<div>
+	<Header />
   <Card className="container">
     <CardTitle
       title="Dashboard"
@@ -11,6 +14,7 @@ const Dashboard = ({ secretData }) => (
 
     {secretData && <CardText style={{ fontSize: '16px', color: 'green' }}>{secretData}</CardText>}
   </Card>
+  </div>
 );
 
 Dashboard.propTypes = {
