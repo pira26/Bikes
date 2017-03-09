@@ -4,8 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon --use_strict server.js",
-    "bundle": "webpack -w"
+    "start": "node server.js",
+    "bundle": "webpack -w",
+    "postinstall": "webpack"
   },
   "author": "Pira",
   "license": "ISC",
