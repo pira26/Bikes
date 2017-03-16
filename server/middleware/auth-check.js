@@ -7,6 +7,7 @@ const config = require('../../config.js');
  *  The Auth Checker middleware function.
  */
 module.exports = (req, res, next) => {
+  console.log('headers', JSON.stringify(req.headers));
   if (!req.headers.authorization) {
     return res.status(401).end();
   }

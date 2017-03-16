@@ -1,11 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const morgan = require('morgan');
 
 const config = require('./config.js');
 
 // connect to the database and load models
-require('./server/models').connect(config.dbUri);
+require('./server/models').connect(config.dbUrl);
 
 const app = express();
 // tell the app to look for static files in these directories
@@ -14,6 +15,10 @@ app.use(express.static('./client/dist/'));
 
 // tell the app to parse HTTP body messages
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+
+app.use(morgan('dev'));
 
 // pass the passport middleware
 app.use(passport.initialize());
@@ -31,8 +36,15 @@ app.use('/api', authCheckMiddleware);
 // routes
 const authRoutes = require('./server/routes/auth');
 const apiRoutes = require('./server/routes/api');
+
+const test = require('./server/routes/test');
+
+//console.log('test',test);
+
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
+
+app.use('/test', test);
 
 // start the server
 app.listen(config.port, () => {

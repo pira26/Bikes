@@ -1,14 +1,14 @@
 import React, { PropTypes } from 'react';
 import { Link, IndexLink } from 'react-router';
-import Auth from '../modules/Auth';
 
+import Auth from '../modules/Auth';
 
 const Base = ({ children }) => (
   //{children} est passé en tant que props 
   <div>
     <div className="top-bar">
       <div className="top-bar-left">
-        <IndexLink to="/">Bike</IndexLink>
+        <IndexLink to="/bike">Bike</IndexLink>
       </div>
 
       {Auth.isUserAuthenticated() ? (
