@@ -12,5 +12,5 @@ injectTapEventPlugin();
 
 ReactDom.render((
   <MuiThemeProvider muiTheme={getMuiTheme()}>
-    <Router history={hashHistory} routes={routes} />
+    <Router history={browserHistory} routes={routes} />
   </MuiThemeProvider>), document.getElementById('root'));

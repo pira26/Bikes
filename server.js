@@ -35,16 +35,17 @@ app.use('/api', authCheckMiddleware);
 
 // routes
 const authRoutes = require('./server/routes/auth');
-const apiRoutes = require('./server/routes/api');
-
-const test = require('./server/routes/test');
-
-//console.log('test',test);
-
 app.use('/auth', authRoutes);
+
+const apiRoutes = require('./server/routes/api');
 app.use('/api', apiRoutes);
 
+const test = require('./server/routes/test');
 app.use('/test', test);
+
+const bike = require('./server/routes/bike');
+app.use('/bike', bike);
+
 
 // start the server
 app.listen(config.port, () => {

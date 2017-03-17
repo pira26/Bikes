@@ -10,7 +10,7 @@ class Card extends React.Component {
 		this.getData();
 }
 	getData() {
-		axios.get('http://localhost:8000/api/bike', {
+		axios.get('http://localhost:8000/bike', {
 			headers: {Authorization: `bearer ${Auth.getToken()}`}
 		}).then((res) => {
 			console.log('data:', res);
@@ -23,7 +23,11 @@ class Card extends React.Component {
 		return (
 			<div>
 				{ this.state.body.map(bike =>
-					<div key={bike.name}>{bike.name}</div>
+					<div key={bike.name}>
+						<div>{bike.name}</div>
+						<button id={bike._id}>EDIT</button>
+						<button id={bike._id}>DELETE</button>
+					</div>
 				)}
 			</div>
 		);
